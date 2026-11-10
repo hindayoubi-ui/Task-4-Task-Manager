@@ -1,0 +1,362 @@
+
+/* General page styles */
+:root {
+  --pink: #d85b91;
+  --pink-dark: #b83e75;
+  --pink-light: #fff0f6;
+  --pink-border: #f4d5e3;
+  --text-dark: #382b33;
+  --text-muted: #81727b;
+  --white: #ffffff;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+/* Page background and default text */
+body {
+  margin: 0;
+  background: #f073a9;
+  color: var(--text-dark);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Navigation bar */
+.app-navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--pink-border);
+  box-shadow: 0 3px 14px rgba(100, 40, 70, 0.05);
+}
+
+.app-navbar .navbar-brand {
+  color: var(--pink-dark);
+  font-size: 1.35rem;
+}
+
+.app-navbar .navbar-brand i {
+  margin-right: 6px;
+}
+
+/* Welcome section */
+.welcome-section {
+  padding: 18px 0;
+}
+
+.section-label {
+  color: #090307;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.welcome-section h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* Main panels */
+.app-panel {
+  background: var(--white);
+  border: 1px solid var(--pink-border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(100, 40, 70, 0.045);
+}
+
+/* Panel headings */
+.panel-heading,
+.tasks-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.panel-heading h2,
+.tasks-heading h2 {
+  font-size: 1.45rem;
+  font-weight: 750;
+  margin-bottom: 6px;
+}
+
+.heading-icon,
+.tasks-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  font-size: 1.45rem;
+}
+
+/* Form labels */
+.form-label {
+  color: var(--text-dark);
+  font-size: 0.93rem;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+
+/* Form inputs */
+.form-control,
+.form-select,
+.input-group-text {
+  border-color: #eadde4;
+  border-radius: 10px;
+  min-height: 44px;
+}
+
+textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.input-group .input-group-text {
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  border-radius: 10px 0 0 10px;
+}
+
+.input-group .form-control {
+  border-radius: 0 10px 10px 0;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 0.2rem rgba(216, 91, 145, 0.14);
+}
+
+/* Main pink button */
+.btn-primary-pink {
+  background: var(--pink);
+  border: 1px solid var(--pink);
+  border-radius: 10px;
+  color: var(--white);
+  font-weight: 650;
+  padding: 10px 17px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary-pink:hover,
+.btn-primary-pink:focus {
+  background: var(--pink-dark);
+  border-color: var(--pink-dark);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* Secondary buttons */
+.btn-outline-secondary {
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+/* Task cards */
+.task-card {
+  height: 100%;
+}
+
+.task-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--white);
+  border: 1px solid var(--pink-border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(100, 40, 70, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card-inner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(100, 40, 70, 0.09);
+}
+
+/* Completed tasks */
+.task-card.completed .task-card-inner {
+  background: #fffafd;
+}
+
+.task-card.completed .task-title {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* Task title and description */
+.task-title {
+  font-size: 1.15rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+  margin-bottom: 10px;
+}
+
+.task-description {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-bottom: 18px;
+}
+
+.task-description-empty {
+  color: #a4979e;
+  font-style: italic;
+}
+
+/* Task badges */
+.task-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.task-badge {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.priority-low {
+  background: #e6f7ed;
+  color: #247346;
+}
+
+.priority-medium {
+  background: #fff3d7;
+  color: #8b6413;
+}
+
+.priority-high {
+  background: #ffe3e7;
+  color: #b4233b;
+}
+
+.status-pending {
+  background: #f0edf2;
+  color: #66566b;
+}
+
+.status-in-progress {
+  background: #e5f1ff;
+  color: #245e9b;
+}
+
+.status-completed {
+  background: #e0f6e9;
+  color: #217348;
+}
+
+/* Deadline and metadata */
+.task-meta {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+.task-deadline {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.task-deadline.overdue {
+  color: #b4233b;
+  font-weight: 700;
+}
+
+.task-deadline i {
+  color: var(--pink-dark);
+}
+
+/* Task action buttons */
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #4af523;
+}
+
+.task-actions .btn {
+  flex: 1 1 auto;
+  font-size: 0.84rem;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+/* Empty state */
+.empty-state {
+  background: var(--white);
+  border: 1px dashed #e90b6f;
+  border-radius: 18px;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+.empty-state > i {
+  color: var(--pink);
+  font-size: 2.8rem;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  font-weight: 750;
+  margin-top: 14px;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 30px;
+  background: var(--white);
+  border-top: 1px solid var(--pink-border);
+  color: var(--text-muted);
+}
+
+.app-footer p:first-child {
+  color: var(--pink-dark);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 576px) {
+  .app-panel {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .panel-heading h2,
+  .tasks-heading h2 {
+    font-size: 1.2rem;
+  }
+
+  .heading-icon,
+  .tasks-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .task-card-inner {
+    padding: 17px;
+  }
+
+  .task-actions .btn {
+    flex: 1 1 40%;
+  }
+}

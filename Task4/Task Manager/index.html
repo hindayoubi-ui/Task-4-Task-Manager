@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="bootstrap.css" />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    
+  </head>
+  <body>
+
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg app-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-check2-square"></i>
+        Task Manager
+      </a>
+
+      <a href="#task-form-section" class="btn btn-primary-pink">
+        <i class="bi bi-plus-lg"></i>
+        New Task
+      </a>
+    </div>
+  </nav>
+
+  <main class="container py-4 py-lg-5">
+
+    <!-- Page Heading -->
+    <section class="welcome-section mb-4 fst-italic">
+      <p class="section-label"><i class="bi bi-calendar-check"></i> PLAN
+<i class="bi bi-list-check"></i> ORGANIZE
+
+<i class="bi bi-trophy"></i> ACHIEVE</p>
+      <h1>Manage Your Tasks</h1>
+      <p class="text-muted mb-0">
+        Keep your tasks organized .
+      </p>
+    </section>
+
+    <!-- Task Form -->
+    <section id="task-form-section" class="app-panel mb-5">
+      <div class="panel-heading">
+        <div>
+          <h2 id="formHeading" class="fst-italic">Add a New Task</h2>
+          <p id="formDescription" class="text-muted mb-0">
+            Fill in the details below to add a task.
+          </p>
+        </div>
+        <span class="heading-icon">
+          <i class="bi bi-pencil-square"></i>
+        </span>
+      </div>
+
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+
+        <div class="row g-3">
+          <!-- Task Title -->
+          <div class="col-12">
+            <label for="taskTitle" class="form-label">Task Title <i class="bi bi-card-text"></i></label>
+            <input
+              type="text"
+              class="form-control"
+              id="taskTitle"
+              placeholder="e.g. Finish project report"
+              maxlength="120"
+              required
+            >
+          </div>
+
+          <!-- Task Description -->
+          <div class="col-12">
+            <label for="taskDescription" class="form-label">
+              Description<i class="bi bi-text-paragraph"></i>
+            </label>
+            <textarea
+              class="form-control"
+              id="taskDescription"
+              rows="3"
+              placeholder="Write a few details about your task..."
+              maxlength="1000"
+            ></textarea>
+          </div>
+
+          <!-- Priority -->
+          <div class="col-md-6">
+            <label for="taskPriority" class="form-label">Priority <i class="bi bi-flag"></i></label>  
+            <select class="form-select" id="taskPriority" required>
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <!-- Deadline -->
+          <div class="col-md-6">
+            <label for="taskDeadline" class="form-label">Deadline   <i class="bi bi-calendar-event"></i></label>
+            <input
+              type="date"
+              class="form-control"
+              id="taskDeadline"
+              required
+            >
+          </div>
+
+          <!-- Status -->
+          <div class="col-12">
+            <label for="taskStatus" class="form-label">Status  <i class="bi bi-hourglass-split"></i></label>
+            <select class="form-select" id="taskStatus" required>
+              <option value="Pending" selected>Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+
+          <!-- Form Buttons -->
+          <div class="col-12 d-flex flex-wrap gap-2 mt-4">
+            <button type="submit" id="saveTaskButton"
+                    class="btn btn-primary-pink">
+              <i class="bi bi-check-lg"></i>
+              Save Task
+            </button>
+
+            <button type="reset" id="resetTaskButton"
+                    class="btn btn-outline-secondary">
+              <i class="bi bi-arrow-counterclockwise"></i>
+              Clear Form
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tasks List and Filters -->
+    <section id="tasks">
+      <div class="tasks-heading mb-3">
+        <div>
+          <h2 class="fst-italic">My Tasks</h2>
+          <p class="text-muted mb-0">Search and organize your tasks.</p>
+        </div>
+        <span class="tasks-icon">
+          <i class="bi bi-list-check"></i>
+        </span>
+      </div>
+
+      <!-- Search and Filters -->
+      <div class="app-panel mb-4">
+        <div class="row g-3">
+          <div class="col-12 col-lg-4">
+            <label for="searchInput" class="form-label">Search</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="bi bi-search"></i>
+              </span>
+              <input
+                type="search"
+                class="form-control"
+                id="searchInput"
+                placeholder="Search by task title..."
+              >
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <label for="priorityFilter" class="form-label">
+              Filter by Priority
+            </label>
+            <select class="form-select" id="priorityFilter">
+              <option value="All">All Priorities</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <label for="statusFilter" class="form-label">
+              Filter by Status
+            </label>
+            <select class="form-select" id="statusFilter">
+              <option value="All">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks Appear Here -->
+      <div id="taskList" class="row g-3"></div>
+
+      <!-- No Results Message -->
+      <div id="noTasksMessage" class="empty-state d-none">
+        <i class="bi bi-clipboard2-x"></i>
+        <h3>No tasks found</h3>
+        <p class="text-muted mb-0">
+          Try another search or add a new task.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container py-4 text-center">
+      <p class="mb-1 fw-semibold">My Task Manager</p>
+      <p class="mb-0 small">
+        “Time is the one thing you can never get back.”
+      </p>
+    </div>
+  </footer>
+    
+       
+
+        <!-- n JavaScript -->
+        <script src="script.js"></script>
+      </body>
+    </html>
+ 
